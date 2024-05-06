@@ -12,7 +12,7 @@ parallel{
 stage('master-agent-pipeline'){
 agent{label 'master'}
 stages{
-stage(clone git){
+stage('clone git'){
 
             steps {
                 echo 'Cloning GAME OF LIFE project code'
@@ -23,7 +23,7 @@ stage(clone git){
 }
 		
 stage('agent1-agent-pipeline'){
-agent {label 'agent1'}
+agent {'label 'agent1'}
 stages{
 		stage('SONARqube ANALYSIS') {
             steps {
