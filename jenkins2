@@ -23,7 +23,7 @@ stage('clone git'){
 }
 		
 stage('agent1-agent-pipeline'){
-agent {'label 'agent1'}
+agent {label 'agent1'}
 stages{
 		stage('SONARqube ANALYSIS') {
             steps {
