@@ -37,8 +37,8 @@ stages{
 			    
             }
         }
-}
-}
+
+
 		
 		
 		stage('Build Artifact ') {
@@ -60,6 +60,8 @@ stage('nexus ') {
             }
         }
     
+}
+}
 }
 }
 }
