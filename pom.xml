@@ -209,12 +209,12 @@
 
 	<distributionManagement>
 		 <snapshotRepository>
-		    <id>nexusRepo</id>
+		    <id>NexusRepo</id>
 		    <url>http://54.144.240.191:8081/repository/mc-snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
-		    <id>nexusRepo</id>
+		    <id>NexusRepo</id>
 		    <url>http://54.144.240.191:8081/repository/mc-release/</url>
 		</repository>
   	</distributionManagement> 
