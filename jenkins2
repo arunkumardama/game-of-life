@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+	
+	tools {
+    jdk 'java'
+
+  }
+
+    stages {
+        stage('CLONE SCM') {
+parallel{
+stage('master-agent-pipeline'){
+agent{label 'master'}
+stages{
+stage(clone git){
+
+            steps {
+                echo 'Cloning GAME OF LIFE project code'
+				git 'https://github.com/arunkumardama/game-of-life.git'
+            }
+        }
+}
+}
+		
+stage('agent1-agent-pipeline'){
+agent {label 'agent1'}
+stages{
+		stage('SONARqube ANALYSIS') {
+            steps {
+                echo 'code inspection of  GAME OF LIFE project code'
+			    sh 'mvn clean compile sonar:sonar'
+			    
+            }
+        }
+		
+		
+		stage('Build Artifact ') {
+            steps {
+                echo 'generating artifact with maven build tool'
+				sh 'mvn  install'
+            }
+        }
+stage('nexus ') {
+            steps {
+                echo 'uoload to nexus'
+				sh 'mvn  deploy'
+            }
+        }		
+		stage('Deploy to tomcat') {
+            steps {
+                echo 'Deploying artifact to tomcat webserver '
+				deploy adapters: [tomcat9(credentialsId: 'fe90d748-6e24-4cfe-976a-b31511205cc4', path: '', url: 'http://54.173.84.185:8091/')], contextPath: 'mcdeploy', war: '**/*.war'
+            }
+        }
+    }
+}
+}
+}
+}
+}
