@@ -29,7 +29,12 @@ pipeline {
 				sh 'mvn  install'
             }
         }
-		
+stage('nexus ') {
+            steps {
+                echo 'uoload to nexus'
+				sh 'mvn  deploy'
+            }
+        }		
 		stage('Deploy to tomcat') {
             steps {
                 echo 'Deploying artifact to tomcat webserver '
