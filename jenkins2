@@ -7,21 +7,25 @@ pipeline {
   }
 
     stages {
-        stage('CLONE SCM') {
+        stage('SCM') {
 parallel{
 stage('master-agent-pipeline'){
 agent{label 'master'}
 stages{
 stage('clone git'){
-
-            steps {
+         steps {
                 echo 'Cloning GAME OF LIFE project code'
-				git 'https://github.com/arunkumardama/game-of-life.git'
-            }
-        }
+		}
+}
+stage('git'){
+steps{
+git 'https://github.com/arunkumardama/game-of-life.git'
+      }
+}
+        
 }
 }
-}
+
 		
 stage('agent1-agent-pipeline'){
 agent {label 'agent1'}
@@ -54,6 +58,7 @@ stage('nexus ') {
             }
         }
     }
+}
 }
 }
 }
