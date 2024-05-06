@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
 	tools {
-    jdk 'OraceJava-8'
+    jdk 'java'
 
   }
 
@@ -10,7 +10,7 @@ pipeline {
         stage('CLONE SCM') {
             steps {
                 echo 'Cloning GAME OF LIFE project code'
-				git 'https://github.com/devopstraininghub/game-of-life.git'
+				git 'https://github.com/arunkumardama/game-of-life.git'
             }
         }
 		
@@ -33,7 +33,7 @@ pipeline {
 		stage('Deploy to tomcat') {
             steps {
                 echo 'Deploying artifact to tomcat webserver '
-				deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://100.26.50.129:8091/')], contextPath: 'gameoflife2', war: '**/*.war'
+				deploy adapters: [tomcat9(credentialsId: 'fe90d748-6e24-4cfe-976a-b31511205cc4', path: '', url: 'http://54.173.84.185:8091/')], contextPath: 'mcdeploy', war: '**/*.war'
             }
         }
     }
