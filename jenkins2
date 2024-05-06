@@ -21,6 +21,7 @@ stage('clone git'){
         }
 }
 }
+}
 		
 stage('agent1-agent-pipeline'){
 agent {label 'agent1'}
@@ -57,4 +58,4 @@ stage('nexus ') {
 }
 }
 }
-}
+
