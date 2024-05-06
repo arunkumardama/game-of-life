@@ -37,6 +37,8 @@ stages{
 			    
             }
         }
+}
+}
 		
 		
 		stage('Build Artifact ') {
@@ -57,10 +59,10 @@ stage('nexus ') {
 				deploy adapters: [tomcat9(credentialsId: 'fe90d748-6e24-4cfe-976a-b31511205cc4', path: '', url: 'http://54.173.84.185:8091/')], contextPath: 'mcdeploy', war: '**/*.war'
             }
         }
-    }
+    
 }
 }
 }
 }
-}
+
 
